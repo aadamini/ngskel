@@ -1,11 +1,14 @@
 var app = angular.module('app',['ngRoute']);
 app.conf=function ($routeProvider) { 
   $routeProvider 
-    .when('/', { 
+    .when('/home', { 
+	controller:'NoteController',
       templateUrl: 'views/home.html' 
     })
-    .otherwise({ 
-      redirectTo: '/' 
-    }); 
+    .when('/home/:id', { 
+      controller: 'NoteController', 
+      templateUrl: 'views/home.html' 
+    }) 
+
 }
 app.config(app.conf);

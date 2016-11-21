@@ -1,1 +1,58 @@
-﻿<h2>Home</h2>
+﻿<section ng-if="!id">
+	<h1>
+	   To Do:
+	</h1>
+	<ul>
+		<li ng-repeat="d in data">
+			<a ng-href="#/home/{{d._id}}">{{d.title|uppercase}}</a>
+		</li>
+	</ul>
+	
+	<form class="well" style="background-color: #adebad">
+		<p class="form-group">
+			<label>To do: </label>
+			<input class="form-control" ng-model="d.title" autofocus />
+			<label> Description :</label>
+			<input class="form-control" ng-model="d.body" />
+			<label> Date :</label>
+			<input type="date" class="form-control" ng-model="d.date" value="d.date"/>
+		</p>
+			<label> Priority:</label>
+			<select ng-model="d.priority">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			</select>
+
+			<button class="btn btn-primary" ng-click ="save()"><i class="fa fa-save"></i> Salva</button>
+	</form>
+</section>
+
+<section ng-if="id" >
+ 		<h1>
+	   To Do:
+		</h1>
+	<form class="well" style="background-color: #eeed90">
+		<p class="form-group"  ng-repeat="d in data">
+			<label>To do: </label>
+			<input class="form-control" ng-model="d.title" autofocus />
+			<label> Description :</label>
+			<input class="form-control" ng-model="d.body" />
+			<label> Date :</label>
+			<input class="form-control" ng-model="d.date| date:'dd/MM/yyyy'"  />
+		</p>
+			<label> Priority:</label>
+			<select ng-model="d.priority">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			</select>
+			
+			<button class="btn btn-primary" ng-click ="save()"><i class="fa fa-save"></i> Salva</button>
+			<a class="btn btn-default" href="#/home"><i class="fa fa-table"></i> Elenco</a>
+			<a class="btn btn-danger" ng-click="remove()"><i class="fa fa-trash"></i> Elimina</a>
+
+	</form>
+</section>
